@@ -1,0 +1,32 @@
+\documentclass[11pt]{ctexart}
+\usepackage{datetime2}%display date in YYYY-MM-DD
+
+\usepackage[unicode]{hyperref}
+\usepackage{url}
+
+\usepackage{blindtext}
+\begin{document}
+%=================title page===========================
+\begin{titlepage}
+\centering
+\begin{Huge}
+	这是一个标题\par
+\end{Huge}
+\vspace{10cm}
+\begin{Large}
+	作者\\ 
+	\vspace{1cm}
+	\today
+\end{Large}
+\end{titlepage}
+%======================TOC=============================
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+%=====================================================
+\setcounter{page}{1}
+\section{章节一}
+\blindtext
+\section{章节二}
+中文测试
+\end{document}
