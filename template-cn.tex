@@ -1,32 +1,121 @@
-\documentclass[11pt]{ctexart}
-\usepackage{datetime2}%display date in YYYY-MM-DD
-
-\usepackage[unicode]{hyperref}
+\documentclass[10pt,a4paper,utf8]{article}
+\usepackage[top=1in, bottom=0.7in, left=1.25in, right=1.25in,headheight=33pt]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{CJKutf8} % chinese font support
+\usepackage{appendix}
+%=================figures subfigures pictures========================
+\usepackage{graphicx}
+%\usepackage{float}
+\usepackage[font=small,floatrowsep=qquad,captionskip=5pt]{floatrow}
+\usepackage{subcaption}
+%====================================================================
+\usepackage{datetime2} % for YYYY-MM-DD date display
+%====================customise header footer=========================
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+%\fancyhead{}
+%\fancyfoot{}
+%\lhead{\includegraphics[height=1cm]{header/header}}
+%\rfoot{\includegraphics[height=0.6cm]{header/footer_text}}
+%\usepackage{lastpage}
+%\lfoot{\thepage\ / \pageref{LastPage}}
+%\renewcommand{\footrulewidth}{0.6pt}
+%====================================================================
 \usepackage{url}
+\usepackage[unicode,pdftex]{hyperref}
 
-\usepackage{blindtext}
+\usepackage{cite}
+\renewcommand{\contentsname}{目录}
+\newcommand{\pic}{./pic/}
+
 \begin{document}
-%=================title page===========================
+\begin{CJK}{UTF8}{gbsn}
+%=============================title page=============================
 \begin{titlepage}
-\centering
-\begin{Huge}
-	这是一个标题\par
-\end{Huge}
-\vspace{10cm}
-\begin{Large}
-	作者\\ 
+	\centering
+	\includegraphics[scale=1]{./pic/white-block.png}\par
 	\vspace{1cm}
-	\today
-\end{Large}
+	\begin{Huge}
+		\textbf{中文编辑示例}\par
+	\end{Huge}
+	\vspace{15cm}
+	\begin{LARGE}
+		作者 \par\vspace{1cm}
+		\today
+	\end{LARGE}
 \end{titlepage}
-%======================TOC=============================
+%====================================================================
 \tableofcontents
+%\listoftables
+%\listoffigures
 \thispagestyle{empty}
+%====================================================================
 \newpage
-%=====================================================
 \setcounter{page}{1}
-\section{章节一}
-\blindtext
-\section{章节二}
-中文测试
+\section{前言}
+主体是Latex的实例样本，中文支持只是辅助。
+
+\begin{enumerate}
+\item Tex版本：Tex Live 2018
+\item 编辑软件：TexMaker
+\item 操作系统：Ubuntu 16.04
+\end{enumerate}
+%====================================================================
+\section{插图与表格}
+\subsection{单独插图}
+插入一张图片, 图 \ref{fig:bunny}。
+\begin{figure}[H]
+\centering
+\begin{ffigbox}
+{\caption{兔兔}\label{fig:bunny}}
+{\includegraphics[width=0.5\linewidth]{\pic bunny.jpeg}}
+\end{ffigbox}
+\end{figure}
+\subsection{并列插图}
+并列插图，并且每张插图有各自的标题
+\begin{figure}[H]
+\CenterFloatBoxes
+\begin{floatrow}
+\begin{ffigbox}
+{\caption{小猫}\label{fig:cat}}
+{\includegraphics[width=\linewidth]{\pic cat.jpeg}}
+\end{ffigbox}
+\begin{ffigbox}
+{\caption{小狗}\label{fig:dog}}
+{\includegraphics[width=\linewidth]{\pic dog.jpeg}}
+\end{ffigbox}
+\end{floatrow}
+\end{figure}
+\subsection{并列插图与表格}
+并排插入图片与表格，并且有各自的标题
+\begin{figure}[H]
+\CenterFloatBoxes
+\begin{floatrow}
+\begin{ffigbox}
+{\caption{bunny}}
+{\includegraphics[width=\linewidth]{\pic bunny}}
+\end{ffigbox}
+\begin{ttabbox}
+{\caption{兔兔表格}}
+{\begin{tabular}{|c|c|}
+\hline 
+\multicolumn{2}{|c|}{兔兔1} \\ 
+\hline 
+兔兔2 & 兔兔3 \\ 
+\hline 
+\end{tabular} }
+\end{ttabbox}
+\end{floatrow}
+\end{figure}
+%====================================================================
+\section{引用}
+使用BibTex文件\cite{citekey}，注脚也可以使用链接\footnote{\url{http://bing.com}}
+%====================================================================
+\newpage
+%\appendix
+
+\bibliographystyle{IEEEtran}
+\bibliography{bibfile}
+%====================================================================
+\end{CJK}
 \end{document}
